@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.suneee</groupId>
+    <artifactId>suneee</artifactId>
+    <version>0.0.1</version>
+  </parent>
+  <artifactId>suneee-web</artifactId>
+  <packaging>war</packaging>
+  <name>suneee-web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <build>
+    <finalName>suneee-web</finalName>
+  </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.suneee</groupId>
+  		<artifactId>suneee-core</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.suneee</groupId>
+  		<artifactId>suneee-service</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
+  </dependencies>
+</project>
