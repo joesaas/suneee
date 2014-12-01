@@ -9,7 +9,7 @@
   
 package com.suneee.ynt.user.exception;  
 
-import com.suneee.core.exception.BusinessException;
+import com.suneee.core.exception.ApplicationException;
 
 
 /**  
@@ -20,7 +20,7 @@ import com.suneee.core.exception.BusinessException;
  * @version  V1.0  
  * @see        
  */
-public class UserException extends BusinessException {
+public class UserException extends ApplicationException {
 
 	/**  
 	 * serialVersionUID:That's the purpose of the variable.  

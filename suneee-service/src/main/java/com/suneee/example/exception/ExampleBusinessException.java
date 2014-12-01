@@ -9,7 +9,7 @@
   
 package com.suneee.example.exception;  
 
-import com.suneee.core.exception.BusinessException;
+import com.suneee.core.exception.ApplicationException;
 
 /**  
  * ClassName:ExampleBusinessException <br/>  
@@ -19,7 +19,7 @@ import com.suneee.core.exception.BusinessException;
  * @version  V1.0  
  * @see        
  */
-public class ExampleBusinessException extends BusinessException {
+public class ExampleBusinessException extends ApplicationException {
 
 	/**
 	 * serialVersionUID:That's the purpose of the variable.  

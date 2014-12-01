@@ -5,9 +5,9 @@
  * Date:2014年11月24日上午10:47:30  
  * Copyright (c) 2014, forint.lee@qq.com All Rights Reserved.  
  *  
-*/  
-  
-package com.suneee.ynt.user.service;  
+*/
+
+package com.suneee.ynt.user.service;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -31,24 +31,44 @@ import com.suneee.ynt.user.model.UserModel;
  * @see        
  */
 @Service("userService")
-public class UserService implements IUserService {
-	
-	private static final Logger log = LoggerFactory.getLogger(UserService.class);
+public class UserService implements IUserService
+{
+
+	private static final Logger	log	= LoggerFactory.getLogger(UserService.class);
 
 	@Autowired
-	private IUserDao userDao;
-	
+	private IUserDao	        userDao;
+
 	/**
 	 * 
 	 * @see com.suneee.ynt.user.service.IUserService#getUserById(java.lang.String)
 	 */
-	@RequiresPermissions({"user:find"})
-	public Response getUserById(String userId) {
+	@RequiresPermissions({ "user:find" })
+	public Response getUserById(String userId)
+	{
 		log.info("test+++++++++++++++++++++++++");
 		UserModel userModel = userDao.getUserById(userId);
 		Response response = CoreResponse.ok(userModel).status(Status.OK).build();
 		return response;
 	}
 
+	@Override
+	public Response addUser(UserModel uModel)
+	{
+		return CoreResponse.ok(uModel).status(Status.OK).build();
+	}
+
+	/**
+	 * 
+	 * @Title: login 
+	 * @Description: (That's the purpose of the method)
+	 * @param uModel
+	 * @return
+	 * @throws
+	 */
+	public Response login(String userId)
+	{
+		return CoreResponse.ok("").status(Status.OK).build();
+	}
+
 }
-  

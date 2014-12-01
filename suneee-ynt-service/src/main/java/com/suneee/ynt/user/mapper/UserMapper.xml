@@ -4,7 +4,7 @@
   	
   	<!-- get user info by userid -->
   	<select id="getUserById" parameterType="string" resultType="userModel">
-		SELECT name, password FROM USER WHERE id = #{userId}
+		SELECT username, password FROM USER_T WHERE id = #{userId}
 	</select>
 	
 </mapper>

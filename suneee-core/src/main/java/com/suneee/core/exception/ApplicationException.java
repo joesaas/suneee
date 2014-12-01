@@ -19,7 +19,7 @@ package com.suneee.core.exception;
  * @version  V1.0  
  * @see        
  */
-public class BusinessException extends Exception {
+public abstract class ApplicationException extends Exception {
 	
 	
 	/**
@@ -31,7 +31,7 @@ public class BusinessException extends Exception {
 	 * 
 	 * Creates a new instance of BusinessException.
 	 */
-	public BusinessException(){
+	public  ApplicationException(){
 		
 	}
 	
@@ -40,7 +40,7 @@ public class BusinessException extends Exception {
 	 * Creates a new instance of BusinessException.  
 	 * @param message
 	 */
-	public BusinessException(String messageKey){
+	public ApplicationException(String messageKey){
 		super(messageKey);
 	}
 	
@@ -49,7 +49,7 @@ public class BusinessException extends Exception {
 	 * Creates a new instance of BusinessException.  
 	 * @param cause
 	 */
-	public BusinessException(Throwable cause){
+	public ApplicationException(Throwable cause){
 		super(cause);
 	}
 	
@@ -59,7 +59,7 @@ public class BusinessException extends Exception {
 	 * @param message
 	 * @param cause
 	 */
-	public BusinessException(String message, Throwable cause){
+	public ApplicationException(String message, Throwable cause){
 		super(message, cause);
 	}
 	

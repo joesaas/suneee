@@ -15,6 +15,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.cxf.common.util.StringUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.slf4j.Logger;
@@ -40,41 +41,34 @@ public class StatelessAuthcFilter extends AccessControlFilter
 	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue)
 			throws Exception
 	{
-		return false;
-	}
-
-	@Override
-	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception
-	{
+		// clientDigest = Md5(userName + password + clientToken).toHex();
 		String clientDigest = request.getParameter(Global.SUNEEE_DIGEST);
+		if(StringUtils.isEmpty(clientDigest)){
+			clientDigest = "ClientDigest";
+		}
+		
 		String userName = request.getParameter(Global.USER_NAME);
+		
 		Map<String, String[]> params = request.getParameterMap();
-
-		AuthenticationToken token = new StatelessToken("admin", "abcd", params);
+		AuthenticationToken token = new StatelessToken("admin", clientDigest, params);
 
 		try {
 			getSubject(request, response).login(token);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			onLoginFail(response);
 			return false;
-			
 		}
 
 		return true;
 	}
 
-	/**
-	 * 
-	 * @Title: onLoginFail 
-	 * @Description: (That's the purpose of the method) 
-	 * @param response
-	 * @throws
-	 */
-	private void onLoginFail(ServletResponse response)
+	@Override
+	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception
 	{
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		return false;
 	}
+
 
 }

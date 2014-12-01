@@ -81,14 +81,14 @@
 	</logger> -->
 	
 	<logger name="com.suneee.ynt" level="DEBUG" addtivity="false">
-		<appender-ref ref="FILE_YNT" />
+		<appender-ref ref="STDOUT" />
 	</logger>
 	
 	<logger name="org.apache.cxf.interceptor" level="DEBUG" addtivity="faslse">
-		<appender-ref ref="FILE_FLOW" />
+		<appender-ref ref="STDOUT" />
 	</logger>
 	
-    <root level="ERROR">
+    <root level="DEBUGGER">
     	<!-- FILE_ERROR -->
         <appender-ref ref="STDOUT" />
     </root>

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.cxf.common.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -57,7 +58,7 @@ public final class PropertiesUtil extends PropertyPlaceholderConfigurer{
 	 */
 	public static final String getProperty(String key, String defaultStr){
 		String value = configProper.get(key);
-		return value == null ? defaultStr : value;
+		return StringUtils.isEmpty(value) ? defaultStr : value;
 	}
 	
 	/**

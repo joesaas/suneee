@@ -17,6 +17,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.authz.permission.AllPermission;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -37,10 +38,11 @@ public class DefaultAuthorizingRealm extends AuthorizingRealm
 	 * TODO  
 	 * @see org.apache.shiro.realm.AuthenticatingRealm#supports(org.apache.shiro.authc.AuthenticationToken)
 	 */
-	public boolean supports(AuthenticationToken token) {  
-        //仅支持StatelessToken类型的Token  
-        return token instanceof StatelessToken;  
-    }
+	public boolean supports(AuthenticationToken token)
+	{
+		//仅支持StatelessToken类型的Token  
+		return token instanceof StatelessToken;
+	}
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals)
@@ -48,11 +50,10 @@ public class DefaultAuthorizingRealm extends AuthorizingRealm
 
 		String userName = (String) principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-		
-		
 		//authorizationInfo.addObjectPermission( new AllPermission());
 		authorizationInfo.addStringPermission("user:find");
 		authorizationInfo.addRole("admin");
+
 		return authorizationInfo;
 	}
 
@@ -60,16 +61,16 @@ public class DefaultAuthorizingRealm extends AuthorizingRealm
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException
 	{
 		StatelessToken statelessToken = (StatelessToken) token;
-		
+
 		String userName = (String) statelessToken.getPrincipal();
-		userName="admin";
 		String key = getKey(userName);
-		return new SimpleAuthenticationInfo(userName, key, getName());
+		Md5Hash md5 = new Md5Hash(key);
+		return new SimpleAuthenticationInfo(userName, statelessToken.getCredentials(), getName());
 	}
 
 	private String getKey(String userName)
 	{
-		return "abcd";
+		return "123456";
 	}
 
 }

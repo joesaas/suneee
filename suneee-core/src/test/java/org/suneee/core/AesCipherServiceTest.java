@@ -18,7 +18,9 @@ import java.security.KeyPairGenerator;
 
 import javax.crypto.Cipher;
 
+import org.apache.shiro.codec.Hex;
 import org.apache.shiro.crypto.AesCipherService;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.util.ByteSource;
 
 import com.mysql.jdbc.util.Base64Decoder;
@@ -36,7 +38,7 @@ public class AesCipherServiceTest
 
 	public static void main(String[] args) throws Exception
 	{
-		String name = "liq2312fdwrisdsaomu";
+		String name = "2liq2312fdwrisdsaomu";
 		AesCipherService service = new AesCipherService();
 
 		service.setKeySize(128);
@@ -45,14 +47,26 @@ public class AesCipherServiceTest
 
 		ByteSource enSource = service.encrypt(name.getBytes(), testKey.getEncoded());
 		System.out.println(enSource.toString());
+		
+		String text = enSource.toHex();
+		System.out.println(enSource.toHex());
+		
+		
 
-		ByteSource deSource = service.decrypt(enSource.getBytes(), testKey.getEncoded());
+		ByteSource deSource = service.decrypt( Hex.decode(text) , testKey.getEncoded());
+		
 
 		System.out.println(new String(deSource.getBytes()));
 
 		//Base64Decoder.decode(in, pos, length)
 
-		PublicEnrypt();
+		//PublicEnrypt();
+		
+		
+		Md5Hash md5 = new Md5Hash("liqiaomudfdfdfd");
+		System.out.println(md5.toString());
+		System.out.println(md5.toHex());
+		
 	}
 
 	private static void PublicEnrypt() throws Exception
