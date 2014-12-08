@@ -13,7 +13,20 @@
         var request = new XMLHttpRequest();
         request.open("POST", "rest/user/addUser", true)
         request.setRequestHeader("Content-type","application/json");
-        request.send("{\"userName1\":\"liqiaomu\"}");
+        
+        var obj = {};
+        obj = {};
+        obj.str1 = "str1";
+        
+       /*  obj.uModel2 = {};
+        obj.uModel2.str2 = "str2"; */
+        
+        obj.authc={};
+        obj.authc.userName = "liqiaomu";
+        obj.authc.suneeeDigest = "123456";
+        
+        var obj2 = [{str1:"str1"}, {str1:"str1"}];
+        request.send(JSON.stringify(obj));
     }
 </script>
 <body>

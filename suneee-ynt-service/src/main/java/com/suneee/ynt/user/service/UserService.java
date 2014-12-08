@@ -9,6 +9,8 @@
 
 package com.suneee.ynt.user.service;
 
+import java.util.List;
+
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
@@ -52,7 +54,7 @@ public class UserService implements IUserService
 		return response;
 	}
 
-	@Override
+	@RequiresPermissions({ "user:find" })
 	public Response addUser(UserModel uModel)
 	{
 		return CoreResponse.ok(uModel).status(Status.OK).build();
@@ -70,5 +72,11 @@ public class UserService implements IUserService
 	{
 		return CoreResponse.ok("").status(Status.OK).build();
 	}
+
+	
+    public Response addUser(List<UserModel> uModels)
+    {
+	    return null;
+    }
 
 }

@@ -34,9 +34,7 @@ public class UserModel extends BaseModel {
 	
 	private String userId;
 	
-	private String userName;
-	
-	private String password;
+	private String str1;
 
 	public String getId() {
 		return id;
@@ -46,28 +44,22 @@ public class UserModel extends BaseModel {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getUserId() {
 		return userId;
 	}
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getStr1()
+	{
+		return str1;
+	}
+
+	public void setStr1(String str1)
+	{
+		this.str1 = str1;
 	}
 }
   

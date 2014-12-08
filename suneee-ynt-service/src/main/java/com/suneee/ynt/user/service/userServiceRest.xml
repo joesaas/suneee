@@ -21,22 +21,6 @@
 	http://cxf.apache.org/schemas/jaxws.xsd">
 
 	<jaxrs:server id="userServiceRest" address="/user">
-		<jaxrs:inInterceptors>
-			<ref bean="logInbound" />
-		</jaxrs:inInterceptors>
-		
-		<jaxrs:outInterceptors>
-			<ref bean="logOutbound" />
-		</jaxrs:outInterceptors>
-		
-		<jaxrs:inFaultInterceptors>
-			<ref bean="logInbound" />
-		</jaxrs:inFaultInterceptors>
-		
-		<jaxrs:outFaultInterceptors>
-			<ref bean="logOutbound" />
-		</jaxrs:outFaultInterceptors>
-		
 		<jaxrs:providers>
 			<ref bean="jsonProvider" />
 			<ref bean="invokeFaultExceptionMapper" />

@@ -5,9 +5,10 @@
  * Date:2014年11月18日下午5:07:40  
  * Copyright (c) 2014, forint.lee@qq.com All Rights Reserved.  
  *  
-*/  
-  
-package com.suneee.core.model;  
+*/
+
+package com.suneee.core.model;
+
 /**  
  * ClassName:BaseModel <br/>  
  * Description:That's the purpose of the class
@@ -16,12 +17,24 @@ package com.suneee.core.model;
  * @version  V1.0  
  * @see        
  */
-public abstract class BaseModel implements ICoreModel {
+public abstract class BaseModel implements ICoreModel
+{
 
 	/**  
 	 * serialVersionUID:That's the purpose of the variable.  
 	 */
-	private static final long serialVersionUID = 7545782290928826389L;
+	private static final long	serialVersionUID	= 7545782290928826389L;
+
+	private AuthcModel	      authc;
+
+	public AuthcModel getAuthc()
+	{
+		return authc;
+	}
+
+	public void setAuthc(AuthcModel authc)
+	{
+		this.authc = authc;
+	}
 
 }
-  

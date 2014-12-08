@@ -30,7 +30,7 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
-				/rest/** = statelessAuthc
+				<!-- /rest/** = statelessAuthc -->
 			</value>
 		</property>
 	</bean>
