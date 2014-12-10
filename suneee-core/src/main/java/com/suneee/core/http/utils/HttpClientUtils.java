@@ -149,9 +149,8 @@ public final class HttpClientUtils
 
 			log.debug(sbulid.toString());
 			HttpGet hGet = new HttpGet(sbulid.toString());
-			
+
 			hGet.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML);
-			
 
 			CloseableHttpResponse cResponse = httpClient.execute(hGet);
 			HttpEntity hEntity = cResponse.getEntity();

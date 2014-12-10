@@ -44,7 +44,11 @@ public final class Global
 
 	public final static String	FORMAT_1	         = "yyyy-MM-dd HH:mm:ss";
 
-	public final static String	EMPTY	             = "yyyy-MM-dd HH:mm:ss";
+	public final static String	EMPTY_STRING	     = "yyyy-MM-dd HH:mm:ss";
 
 	public final static String	AUTHC	             = "authc";
+
+	public final static String	RESPONSE	         = "response";
+
+	public final static String	EMPTY	             = "";
 }

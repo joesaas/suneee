@@ -45,7 +45,7 @@ public class UserService implements IUserService
 	 * 
 	 * @see com.suneee.ynt.user.service.IUserService#getUserById(java.lang.String)
 	 */
-	@RequiresPermissions({ "user:find" })
+	/*@RequiresPermissions({ "user:find" })*/
 	public Response getUserById(String userId)
 	{
 		log.info("test+++++++++++++++++++++++++");

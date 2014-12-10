@@ -22,6 +22,7 @@
 		<property name="maxStatements" value="0" />
 		<property name="maxPoolSize" value="25" />
 		<property name="maxIdleTime" value="60" />
+		<property name="checkoutTimeout" value="10000"/>
 		<property name="debugUnreturnedConnectionStackTraces" value="true" />
 		<property name="preferredTestQuery" value="select 1 from dual" />
 		<property name="idleConnectionTestPeriod" value="60" />

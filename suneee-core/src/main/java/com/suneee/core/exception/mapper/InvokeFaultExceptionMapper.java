@@ -18,7 +18,9 @@ import javax.ws.rs.ext.Provider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.suneee.core.common.constant.Global;
 import com.suneee.core.response.CoreResponse;
+import com.suneee.core.utils.ReflectionUtils;
 
 /**
  * ClassName:InvokeFaultExceptionMapper <br/>
@@ -29,20 +31,27 @@ import com.suneee.core.response.CoreResponse;
  * @see
  */
 @Provider
-public class InvokeFaultExceptionMapper implements ExceptionMapper<Exception> {
+public class InvokeFaultExceptionMapper implements ExceptionMapper<Exception>
+{
 
-	private static final Logger log = LoggerFactory
-			.getLogger(InvokeFaultExceptionMapper.class);
+	private static final Logger	log	= LoggerFactory.getLogger(InvokeFaultExceptionMapper.class);
 
 	@Override
-	public Response toResponse(Exception ex) {
+	public Response toResponse(Exception ex)
+	{
 
-		log.debug(ex.getMessage());
-		Response response = CoreResponse.status(Status.INTERNAL_SERVER_ERROR)
-				.type(MediaType.APPLICATION_JSON).entity(ex.getMessage())
-				.build();
+		log.error(ex.getMessage());
+		//获取异常对象response属性， 如果有则直接返回
+		Object response = ReflectionUtils.getDeclaredField(ex, Global.RESPONSE, Response.class);
 
-		return response;
+		if (response != null) {
+			return (Response) response;
+		}
+
+		Response resultResponse = CoreResponse.status(Status.INTERNAL_SERVER_ERROR).type(MediaType.APPLICATION_JSON)
+		        .entity(Global.EMPTY_STRING).build();
+
+		return resultResponse;
 	}
 
 }

@@ -88,8 +88,8 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-    <root level="DEBUGGER">
-    	<!-- FILE_ERROR -->
-        <appender-ref ref="STDOUT" />
+    <root level="ERROR">
+    	<!-- FILE_ERROR DEBUGGER-->
+        <appender-ref ref="FILE_ERROR" />
     </root>
 </configuration>
